@@ -138,7 +138,7 @@
             this.danhMụcNgườiDùngToolStripMenuItem.Name = "danhMụcNgườiDùngToolStripMenuItem";
             this.danhMụcNgườiDùngToolStripMenuItem.Size = new System.Drawing.Size(267, 26);
             this.danhMụcNgườiDùngToolStripMenuItem.Text = "Danh mục người dùng";
-            this.danhMụcNgườiDùngToolStripMenuItem.Click += new System.EventHandler(this.danhMụcNgườiDùngToolStripMenuItem_Click);
+            this.danhMụcNgườiDùngToolStripMenuItem.Click += new System.EventHandler(this.NguoiDungClick);
             // 
             // main
             // 

@@ -1,25 +1,23 @@
-﻿using System;
+﻿using quanlycuahang.BS_layer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Linq;
-using System.Data.Linq.Mapping;
-using quanlycuahang.BS_layer;
+using System.Xml.Linq;
 
 namespace quanlycuahang
 {
-    public partial class frmQLDanhMucThanhPho : Form
+    public partial class frmQLDanhMucNguoiDung : Form
     {
         bool Them;
         string err;
-        BLThanhPho dbTP = new BLThanhPho();
-        public frmQLDanhMucThanhPho()
+        BLNguoiDung dbND = new BLNguoiDung();
+        public frmQLDanhMucNguoiDung()
         {
             InitializeComponent();
         }
@@ -28,12 +26,12 @@ namespace quanlycuahang
             try
             {
                 // Đưa dữ liệu lên DataGridView
-                dgvCity.DataSource = dbTP.LayThanhPho();
+                dgvND.DataSource = dbND.LayNguoiDung();
                 // Thay đổi độ rộng cột
-                dgvCity.AutoResizeColumns();
+                dgvND.AutoResizeColumns();
                 // Xóa trống các đối tượng trong Panel
-                this.txtID.ResetText();
-                this.txtName.ResetText();
+                this.txtTen.ResetText();
+                this.txtMK.ResetText();
                 // Không cho thao tác trên các nút Lưu / Hủy
                 this.btnSave.Enabled = false;
                 this.btnCancel.Enabled = false;
@@ -51,7 +49,8 @@ namespace quanlycuahang
                 MessageBox.Show("Không lấy được nội dung trong table THANHPHO. Lỗi rồi!!!");
             }
         }
-       
+
+
         private void btnReload_Click(object sender, EventArgs e)
         {
             LoadData();
@@ -71,10 +70,10 @@ namespace quanlycuahang
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Them = true;
-            txtID.Enabled = true;
+            txtTen.Enabled = true;
             // Xóa trống các đối tượng trong Panel
-            txtID.ResetText();
-            txtName.ResetText();
+            txtTen.ResetText();
+            txtMK.ResetText();
             // Cho thao tác trên các nút Lưu / Hủy / Panel
             btnSave.Enabled = true;
             btnCancel.Enabled = true;
@@ -85,19 +84,19 @@ namespace quanlycuahang
             btnRemove.Enabled = false;
             btnExit.Enabled = false;
             // Đưa con trỏ đến TextField txtMaKH
-            txtID.Focus();
+            txtTen.Focus();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!txtID.Text.Trim().Equals(""))
+            if (!txtTen.Text.Trim().Equals(""))
             {
                 // Thêm dữ liệu
                 if (Them)
                 {
                     try
                     {
-                        dbTP.ThemThanhPho(txtID.Text, txtName.Text, ref err);
+                        dbND.ThemNguoiDung(txtTen.Text, txtMK.Text, ref err);
                         // Load lại dữ liệu trên DataGridView
                         LoadData();
                         // Thông báo
@@ -112,7 +111,7 @@ namespace quanlycuahang
                 {
                     try
                     {
-                        dbTP.CapNhatThanhPho(txtID.Text, txtName.Text, ref err);
+                        dbND.CapNhatNguoiDung(txtTen.Text, txtMK.Text, ref err);
                         LoadData();
                         // Thông báo
                         MessageBox.Show("Đã sửa xong!");
@@ -127,7 +126,7 @@ namespace quanlycuahang
             else
             {
                 MessageBox.Show("Thành phố chưa có. Lỗi rồi!");
-                txtID.Focus();
+                txtTen.Focus();
             }
 
         }
@@ -149,8 +148,8 @@ namespace quanlycuahang
             this.btnRemove.Enabled = false;
 
             // Đưa con trỏ đến TextField txtMaKH
-            this.txtID.Enabled = false;
-            this.txtName.Focus();
+            this.txtTen.Enabled = false;
+            this.txtMK.Focus();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -164,7 +163,7 @@ namespace quanlycuahang
             {
                 try
                 {
-                    dbTP.XoaThanhPho(ref err, txtID.Text);
+                    dbND.XoaNguoiDung(ref err, txtTen.Text);
                     LoadData();
                     // Thông báo
                     MessageBox.Show("Đã xóa xong!");
@@ -180,8 +179,8 @@ namespace quanlycuahang
         private void btnCancel_Click(object sender, EventArgs e)
         {
             // Xóa trống các đối tượng trong Panel
-            txtID.ResetText();
-            txtName.ResetText();
+            txtTen.ResetText();
+            txtMK.ResetText();
             // Cho thao tác trên các nút Thêm / Sửa / Xóa / Thoát
             btnAdd.Enabled = true;
             btnEdit.Enabled = true;
@@ -201,12 +200,17 @@ namespace quanlycuahang
         private void dgvCity_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Thứ tự dòng hiện hành
-            int r = dgvCity.CurrentCell.RowIndex;
+            int r = dgvND.CurrentCell.RowIndex;
             // Chuyển thông tin lên panel
-            this.txtID.Text =
-            dgvCity.Rows[r].Cells[0].Value.ToString();
-            this.txtName.Text =
-            dgvCity.Rows[r].Cells[1].Value.ToString();
+            this.txtTen.Text =
+            dgvND.Rows[r].Cells[0].Value.ToString();
+            this.txtMK.Text =
+            dgvND.Rows[r].Cells[1].Value.ToString();
+        }
+
+        private void frmQLDanhMucNguoiDung_Load(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

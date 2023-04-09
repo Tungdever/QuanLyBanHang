@@ -64,3 +64,4 @@ C:\Users\DELL\Desktop\QuanLyBanHang\quanlycuahang\obj\Debug\quanlycuahang.csproj
 C:\Users\DELL\Desktop\QuanLyBanHang\quanlycuahang\obj\Debug\quanlycuahang.csproj.CoreCompileInputs.cache
 C:\Users\DELL\Desktop\QuanLyBanHang\quanlycuahang\obj\Debug\quanlycuahang.exe
 C:\Users\DELL\Desktop\QuanLyBanHang\quanlycuahang\obj\Debug\quanlycuahang.pdb
+C:\Users\DELL\Desktop\QuanLyBanHang\quanlycuahang\obj\Debug\quanlycuahang.frmQLDanhMucNguoiDung.resources

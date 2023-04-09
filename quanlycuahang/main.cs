@@ -39,15 +39,17 @@ namespace quanlycuahang
             myNV.ShowDialog();
 
         }
-        private void danhMụcNgườiDùngToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           
-        }
 
         private void city_Click(object sender, EventArgs e)
         {
             frmQLDanhMucThanhPho myCity = new frmQLDanhMucThanhPho();
             myCity.ShowDialog();
+        }
+
+        private void NguoiDungClick(object sender, EventArgs e)
+        {
+            frmQLDanhMucNguoiDung myND = new frmQLDanhMucNguoiDung();
+            myND.ShowDialog();
         }
     }
 }
