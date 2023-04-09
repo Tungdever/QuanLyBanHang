@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BS layer\BLKhachHang.cs" />
+    <Compile Include="BS layer\BLNhanVien.cs" />
     <Compile Include="BS layer\BLThanhPho.cs" />
     <Compile Include="frmQLDanhMucKhachHang.cs">
       <SubType>Form</SubType>
@@ -60,6 +61,12 @@
     </Compile>
     <Compile Include="frmQLDanhMucThanhPho.Designer.cs">
       <DependentUpon>frmQLDanhMucThanhPho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQLDanhMucNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLDanhMucNhanVien.Designer.cs">
+      <DependentUpon>frmQLDanhMucNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="main.cs">
       <SubType>Form</SubType>
@@ -76,6 +83,9 @@
     </Compile>
     <EmbeddedResource Include="frmQLDanhMucKhachHang.resx">
       <DependentUpon>frmQLDanhMucKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQLDanhMucNhanVien.resx">
+      <DependentUpon>frmQLDanhMucNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQLDanhMucThanhPho.resx">
       <DependentUpon>frmQLDanhMucThanhPho.cs</DependentUpon>

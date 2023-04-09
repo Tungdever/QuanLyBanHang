@@ -1,23 +1,25 @@
-﻿using quanlycuahang.BS_layer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
+using System.Data.Linq;
+using System.Data.Linq.Mapping;
+using quanlycuahang.BS_layer;
 
 namespace quanlycuahang
 {
-    public partial class frmQLDanhMucKhachHang : Form
+    public partial class frmQLDanhMucNhanVien : Form
     {
         bool Them;
         string err;
-        BLKhachHang dbKH = new BLKhachHang();
-        public frmQLDanhMucKhachHang()
+        BLNhanVien dbNV = new BLNhanVien();
+        public frmQLDanhMucNhanVien()
         {
             InitializeComponent();
         }
@@ -25,17 +27,17 @@ namespace quanlycuahang
         {
             try
             {
-                // Đưa dữ liệu lên DataGridView
-                dgvKH.DataSource = dbKH.LayKhachHang();
+                // Đưa dữ liệu lên DataGridView 
+                dgvNV.DataSource = dbNV.LayNhanVien();
                 // Thay đổi độ rộng cột
-                dgvKH.AutoResizeColumns();
+                dgvNV.AutoResizeColumns();
                 // Xóa trống các đối tượng trong Panel
                 this.txtID.ResetText();
-                this.txtCity.ResetText();
-                this.txtCty.ResetText();
-                this.txtDChi.ResetText();
+                this.txtHoLot.ResetText();
+                this.txtTen.ResetText();
+                this.txtDiaChi.ResetText();
                 this.txtPhone.ResetText();
-
+                this.dtpNgayNV.ResetText();
                 // Không cho thao tác trên các nút Lưu / Hủy
                 this.btnSave.Enabled = false;
                 this.btnCancel.Enabled = false;
@@ -46,36 +48,14 @@ namespace quanlycuahang
                 this.btnRemove.Enabled = true;
 
                 //
-                dgvCity_CellClick(null, null);
+                dgvNhanVien_CellClick(null, null);
             }
             catch
             {
                 MessageBox.Show("Không lấy được nội dung trong table THANHPHO. Lỗi rồi!!!");
             }
         }
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            // Kich hoạt biến Them
-            Them = true;
-            txtID.Enabled = true;
-            // Xóa trống các đối tượng trong Panel
-            this.txtID.ResetText();
-            this.txtCity.ResetText();
-            this.txtCty.ResetText();
-            this.txtDChi.ResetText();
-            this.txtPhone.ResetText();
-            // Cho thao tác trên các nút Lưu / Hủy / Panel
-            btnSave.Enabled = true;
-            btnCancel.Enabled = true;
-            pnl.Enabled = true;
-            // Không cho thao tác trên các nút Thêm / Xóa / Thoát
-            btnAdd.Enabled = false;
-            btnEdit.Enabled = false;
-            btnRemove.Enabled = false;
-            btnExit.Enabled = false;
-            // Đưa con trỏ đến TextField txtMaKH
-            txtID.Focus();
-        }
+
         private void btnReload_Click(object sender, EventArgs e)
         {
             LoadData();
@@ -98,10 +78,11 @@ namespace quanlycuahang
             txtID.Enabled = true;
             // Xóa trống các đối tượng trong Panel
             this.txtID.ResetText();
-            this.txtCity.ResetText();
-            this.txtCty.ResetText();
-            this.txtDChi.ResetText();
+            this.txtHoLot.ResetText();
+            this.txtTen.ResetText();
+            this.txtDiaChi.ResetText();
             this.txtPhone.ResetText();
+            this.dtpNgayNV.ResetText();
             // Cho thao tác trên các nút Lưu / Hủy / Panel
             btnSave.Enabled = true;
             btnCancel.Enabled = true;
@@ -124,7 +105,7 @@ namespace quanlycuahang
                 {
                     try
                     {
-                        dbKH.ThemKhachHang(txtID.Text, txtCty.Text,txtDChi.Text,txtCity.Text,txtPhone.Text, ref err);
+                        dbNV.ThemNhanVien(txtID.Text, txtHoLot.Text,txtTen.Text,cboxNu.Checked,dtpNgayNV.Value,txtDiaChi.Text,txtPhone.Text, ref err);
                         // Load lại dữ liệu trên DataGridView
                         LoadData();
                         // Thông báo
@@ -139,7 +120,7 @@ namespace quanlycuahang
                 {
                     try
                     {
-                        dbKH.CapNhatKhachHang(txtID.Text, txtCty.Text, txtDChi.Text, txtCity.Text, txtPhone.Text, ref err);
+                        dbNV.CapNhatNhanVien(txtID.Text, txtHoLot.Text, txtTen.Text, cboxNu.Checked, dtpNgayNV.Value, txtDiaChi.Text, txtPhone.Text, ref err);
                         LoadData();
                         // Thông báo
                         MessageBox.Show("Đã sửa xong!");
@@ -165,7 +146,7 @@ namespace quanlycuahang
             Them = false;
             // Cho phép thao tác trên Panel
             this.pnl.Enabled = true;
-            dgvCity_CellClick(null, null);
+            dgvNhanVien_CellClick(null, null);
             // Cho thao tác trên các nút Lưu / Hủy / Panel
             this.btnSave.Enabled = true;
             this.btnCancel.Enabled = true;
@@ -177,7 +158,7 @@ namespace quanlycuahang
 
             // Đưa con trỏ đến TextField txtMaKH
             this.txtID.Enabled = false;
-            this.txtCty.Focus();
+            this.txtHoLot.Focus();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -191,7 +172,7 @@ namespace quanlycuahang
             {
                 try
                 {
-                    dbKH.XoaKhachHang(ref err, txtID.Text);
+                    dbNV.XoaNhanVien(ref err, txtID.Text);
                     LoadData();
                     // Thông báo
                     MessageBox.Show("Đã xóa xong!");
@@ -208,10 +189,11 @@ namespace quanlycuahang
         {
             // Xóa trống các đối tượng trong Panel
             this.txtID.ResetText();
-            this.txtCity.ResetText();
-            this.txtCty.ResetText();
-            this.txtDChi.ResetText();
+            this.txtHoLot.ResetText();
+            this.txtTen.ResetText();
+            this.txtDiaChi.ResetText();
             this.txtPhone.ResetText();
+            this.dtpNgayNV.ResetText();
             // Cho thao tác trên các nút Thêm / Sửa / Xóa / Thoát
             btnAdd.Enabled = true;
             btnEdit.Enabled = true;
@@ -223,31 +205,31 @@ namespace quanlycuahang
             pnl.Enabled = false;
         }
 
-        private void frmQLDanhMucThanhPho_Load(object sender, EventArgs e)
+        private void frmQLDanhMucNhanVien_Load(object sender, EventArgs e)
         {
             LoadData();
         }
 
-        private void dgvCity_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Thứ tự dòng hiện hành
-            int r = dgvKH.CurrentCell.RowIndex;
+            int r = dgvNV.CurrentCell.RowIndex;
             // Chuyển thông tin lên panel
             this.txtID.Text =
-            dgvKH.Rows[r].Cells[0].Value.ToString();
-            this.txtCty.Text =
-            dgvKH.Rows[r].Cells[1].Value.ToString();
-            this.txtDChi.Text =
-            dgvKH.Rows[r].Cells[2].Value.ToString();
-            this.txtCity.Text =
-            dgvKH.Rows[r].Cells[3].Value.ToString();
+            dgvNV.Rows[r].Cells[0].Value.ToString();
+            this.txtHoLot.Text =
+            dgvNV.Rows[r].Cells[1].Value.ToString();
+            this.txtTen.Text =
+            dgvNV.Rows[r].Cells[2].Value.ToString();
+            this.cboxNu.Checked = Convert.ToBoolean(dgvNV.Rows[r].Cells[3].Value);
+            if (DateTime.TryParse(dgvNV.Rows[r].Cells[4].Value?.ToString(), out DateTime date))
+            {
+                this.dtpNgayNV.Value = date;
+            }
+            this.txtDiaChi.Text =
+            dgvNV.Rows[r].Cells[5].Value.ToString();
             this.txtPhone.Text =
-            dgvKH.Rows[r].Cells[4].Value.ToString();
-        }
-
-        private void frmQLDanhMucKhachHang_Load(object sender, EventArgs e)
-        {
-            LoadData(); 
+            dgvNV.Rows[r].Cells[6].Value.ToString();
         }
     }
 }

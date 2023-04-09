@@ -35,8 +35,9 @@ namespace quanlycuahang
 
         private void NhanVienClick(object sender, EventArgs e)
         {
-           
-           
+            frmQLDanhMucNhanVien myNV = new frmQLDanhMucNhanVien();
+            myNV.ShowDialog();
+
         }
         private void danhMụcNgườiDùngToolStripMenuItem_Click(object sender, EventArgs e)
         {

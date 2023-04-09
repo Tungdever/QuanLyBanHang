@@ -8,7 +8,7 @@ namespace quanlycuahang.BS_layer
 {
     public class BLKhachHang
     {
-        public System.Data.Linq.Table<KhachHang> LayThanhPho()
+        public System.Data.Linq.Table<KhachHang> LayKhachHang()
         {
             QuanLyBanHangDataContext qlBH = new QuanLyBanHangDataContext();
             return qlBH.KhachHangs;
