@@ -45,6 +45,9 @@ namespace quanlycuahang
     partial void InsertNhanVien(NhanVien instance);
     partial void UpdateNhanVien(NhanVien instance);
     partial void DeleteNhanVien(NhanVien instance);
+    partial void InsertSanPham(SanPham instance);
+    partial void UpdateSanPham(SanPham instance);
+    partial void DeleteSanPham(SanPham instance);
     partial void InsertThanhPho(ThanhPho instance);
     partial void UpdateThanhPho(ThanhPho instance);
     partial void DeleteThanhPho(ThanhPho instance);
@@ -880,8 +883,10 @@ namespace quanlycuahang
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SanPham")]
-	public partial class SanPham
+	public partial class SanPham : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private string _MaSP;
 		
@@ -893,11 +898,28 @@ namespace quanlycuahang
 		
 		private string _Hinh;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaSPChanging(string value);
+    partial void OnMaSPChanged();
+    partial void OnTenSPChanging(string value);
+    partial void OnTenSPChanged();
+    partial void OnDonViTinhChanging(string value);
+    partial void OnDonViTinhChanged();
+    partial void OnDonGiaChanging(System.Nullable<double> value);
+    partial void OnDonGiaChanged();
+    partial void OnHinhChanging(string value);
+    partial void OnHinhChanged();
+    #endregion
+		
 		public SanPham()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaSP", DbType="NChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaSP", DbType="NChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MaSP
 		{
 			get
@@ -908,7 +930,11 @@ namespace quanlycuahang
 			{
 				if ((this._MaSP != value))
 				{
+					this.OnMaSPChanging(value);
+					this.SendPropertyChanging();
 					this._MaSP = value;
+					this.SendPropertyChanged("MaSP");
+					this.OnMaSPChanged();
 				}
 			}
 		}
@@ -924,7 +950,11 @@ namespace quanlycuahang
 			{
 				if ((this._TenSP != value))
 				{
+					this.OnTenSPChanging(value);
+					this.SendPropertyChanging();
 					this._TenSP = value;
+					this.SendPropertyChanged("TenSP");
+					this.OnTenSPChanged();
 				}
 			}
 		}
@@ -940,7 +970,11 @@ namespace quanlycuahang
 			{
 				if ((this._DonViTinh != value))
 				{
+					this.OnDonViTinhChanging(value);
+					this.SendPropertyChanging();
 					this._DonViTinh = value;
+					this.SendPropertyChanged("DonViTinh");
+					this.OnDonViTinhChanged();
 				}
 			}
 		}
@@ -956,7 +990,11 @@ namespace quanlycuahang
 			{
 				if ((this._DonGia != value))
 				{
+					this.OnDonGiaChanging(value);
+					this.SendPropertyChanging();
 					this._DonGia = value;
+					this.SendPropertyChanged("DonGia");
+					this.OnDonGiaChanged();
 				}
 			}
 		}
@@ -972,8 +1010,32 @@ namespace quanlycuahang
 			{
 				if ((this._Hinh != value))
 				{
+					this.OnHinhChanging(value);
+					this.SendPropertyChanging();
 					this._Hinh = value;
+					this.SendPropertyChanged("Hinh");
+					this.OnHinhChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

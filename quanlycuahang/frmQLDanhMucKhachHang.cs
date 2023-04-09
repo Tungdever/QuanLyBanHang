@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace quanlycuahang
 {
@@ -27,8 +28,13 @@ namespace quanlycuahang
             {
                 // Đưa dữ liệu lên DataGridView
                 dgvKH.DataSource = dbKH.LayKhachHang();
+                var listCity = from tp in dbKH.LayKhachHang()
+                               select tp.ThanhPho;
+                txtCity.DataSource = listCity;
+                
+                // Thêm cột ComboBox vào DataGridView
                 // Thay đổi độ rộng cột
-                dgvKH.AutoResizeColumns();
+                //dgvKH.AutoResizeColumns();
                 // Xóa trống các đối tượng trong Panel
                 this.txtID.ResetText();
                 this.txtCity.ResetText();
@@ -46,35 +52,12 @@ namespace quanlycuahang
                 this.btnRemove.Enabled = true;
 
                 //
-                dgvCity_CellClick(null, null);
+                dgvKH_CellClick(null, null);
             }
             catch
             {
-                MessageBox.Show("Không lấy được nội dung trong table THANHPHO. Lỗi rồi!!!");
+                MessageBox.Show("Không lấy được nội dung trong table KHACHHANG. Lỗi rồi!!!");
             }
-        }
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            // Kich hoạt biến Them
-            Them = true;
-            txtID.Enabled = true;
-            // Xóa trống các đối tượng trong Panel
-            this.txtID.ResetText();
-            this.txtCity.ResetText();
-            this.txtCty.ResetText();
-            this.txtDChi.ResetText();
-            this.txtPhone.ResetText();
-            // Cho thao tác trên các nút Lưu / Hủy / Panel
-            btnSave.Enabled = true;
-            btnCancel.Enabled = true;
-            pnl.Enabled = true;
-            // Không cho thao tác trên các nút Thêm / Xóa / Thoát
-            btnAdd.Enabled = false;
-            btnEdit.Enabled = false;
-            btnRemove.Enabled = false;
-            btnExit.Enabled = false;
-            // Đưa con trỏ đến TextField txtMaKH
-            txtID.Focus();
         }
         private void btnReload_Click(object sender, EventArgs e)
         {
@@ -153,7 +136,7 @@ namespace quanlycuahang
             }
             else
             {
-                MessageBox.Show("Thành phố chưa có. Lỗi rồi!");
+                MessageBox.Show("Khách hàng chưa có. Lỗi rồi!");
                 txtID.Focus();
             }
 
@@ -165,7 +148,7 @@ namespace quanlycuahang
             Them = false;
             // Cho phép thao tác trên Panel
             this.pnl.Enabled = true;
-            dgvCity_CellClick(null, null);
+            dgvKH_CellClick(null, null);
             // Cho thao tác trên các nút Lưu / Hủy / Panel
             this.btnSave.Enabled = true;
             this.btnCancel.Enabled = true;
@@ -223,26 +206,29 @@ namespace quanlycuahang
             pnl.Enabled = false;
         }
 
-        private void frmQLDanhMucThanhPho_Load(object sender, EventArgs e)
-        {
-            LoadData();
-        }
-
-        private void dgvCity_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvKH_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Thứ tự dòng hiện hành
             int r = dgvKH.CurrentCell.RowIndex;
             // Chuyển thông tin lên panel
-            this.txtID.Text =
-            dgvKH.Rows[r].Cells[0].Value.ToString();
-            this.txtCty.Text =
-            dgvKH.Rows[r].Cells[1].Value.ToString();
-            this.txtDChi.Text =
-            dgvKH.Rows[r].Cells[2].Value.ToString();
-            this.txtCity.Text =
-            dgvKH.Rows[r].Cells[3].Value.ToString();
-            this.txtPhone.Text =
-            dgvKH.Rows[r].Cells[4].Value.ToString();
+            try
+            {
+                this.txtID.Text =
+                dgvKH.Rows[r].Cells[0].Value.ToString();
+                this.txtCty.Text =
+                dgvKH.Rows[r].Cells[1].Value.ToString();
+                this.txtDChi.Text =
+                dgvKH.Rows[r].Cells[2].Value.ToString();
+                this.txtCity.Text =
+                dgvKH.Rows[r].Cells[3].Value.ToString();
+                this.txtPhone.Text =
+                dgvKH.Rows[r].Cells[4].Value.ToString();
+            }
+            catch 
+            {
+                MessageBox.Show("Dòng này không có dữ liệu");
+            }
+            
         }
 
         private void frmQLDanhMucKhachHang_Load(object sender, EventArgs e)

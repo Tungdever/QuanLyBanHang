@@ -65,3 +65,7 @@ C:\Users\DELL\Desktop\QuanLyBanHang\quanlycuahang\obj\Debug\quanlycuahang.csproj
 C:\Users\DELL\Desktop\QuanLyBanHang\quanlycuahang\obj\Debug\quanlycuahang.exe
 C:\Users\DELL\Desktop\QuanLyBanHang\quanlycuahang\obj\Debug\quanlycuahang.pdb
 C:\Users\DELL\Desktop\QuanLyBanHang\quanlycuahang\obj\Debug\quanlycuahang.frmQLDanhMucNguoiDung.resources
+C:\Users\DELL\Desktop\QuanLyBanHang\quanlycuahang\obj\Debug\quanlycuahang.frmQLDanhMucSanPham.resources
+C:\Users\DELL\Desktop\QuanLyBanHang\quanlycuahang\obj\Debug\quanlycuahang.frmQLDanhMucHoaDon.resources
+C:\Users\DELL\Desktop\QuanLyBanHang\quanlycuahang\obj\Debug\quanlycuahang.frmQLDanhMucChiTietHopDong.resources
+C:\Users\DELL\Desktop\QuanLyBanHang\quanlycuahang\obj\Debug\quanlycuahang.frmLogin.resources

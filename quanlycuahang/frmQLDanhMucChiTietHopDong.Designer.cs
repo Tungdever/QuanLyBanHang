@@ -1,6 +1,6 @@
 ﻿namespace quanlycuahang
 {
-    partial class frmQLDanhMucNguoiDung
+    partial class frmQLDanhMucChiTietHopDong
     {
         /// <summary>
         /// Required designer variable.
@@ -33,17 +33,20 @@
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.dgvND = new System.Windows.Forms.DataGridView();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCTHD = new System.Windows.Forms.DataGridView();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
-            this.txtMK = new System.Windows.Forms.TextBox();
-            this.txtTen = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblID = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvND)).BeginInit();
+            this.txtMaSP = new System.Windows.Forms.TextBox();
+            this.txtMaHD = new System.Windows.Forms.TextBox();
+            this.lblMaSP = new System.Windows.Forms.Label();
+            this.lblMaHD = new System.Windows.Forms.Label();
+            this.txtSoluong = new System.Windows.Forms.TextBox();
+            this.lblSoLuong = new System.Windows.Forms.Label();
+            this.colMaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSoluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCTHD)).BeginInit();
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +54,7 @@
             // 
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnCancel.ForeColor = System.Drawing.Color.Blue;
-            this.btnCancel.Location = new System.Drawing.Point(658, 416);
+            this.btnCancel.Location = new System.Drawing.Point(648, 473);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 40);
             this.btnCancel.TabIndex = 18;
@@ -63,7 +66,7 @@
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.Blue;
-            this.btnSave.Location = new System.Drawing.Point(516, 416);
+            this.btnSave.Location = new System.Drawing.Point(506, 473);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 40);
             this.btnSave.TabIndex = 17;
@@ -75,7 +78,7 @@
             // 
             this.btnRemove.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnRemove.ForeColor = System.Drawing.Color.Blue;
-            this.btnRemove.Location = new System.Drawing.Point(360, 416);
+            this.btnRemove.Location = new System.Drawing.Point(350, 473);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 40);
             this.btnRemove.TabIndex = 16;
@@ -87,7 +90,7 @@
             // 
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnEdit.ForeColor = System.Drawing.Color.Blue;
-            this.btnEdit.Location = new System.Drawing.Point(210, 416);
+            this.btnEdit.Location = new System.Drawing.Point(200, 473);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 40);
             this.btnEdit.TabIndex = 15;
@@ -99,7 +102,7 @@
             // 
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.Blue;
-            this.btnAdd.Location = new System.Drawing.Point(56, 416);
+            this.btnAdd.Location = new System.Drawing.Point(46, 473);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(100, 40);
             this.btnAdd.TabIndex = 14;
@@ -107,41 +110,26 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // dgvND
+            // dgvCTHD
             // 
-            this.dgvND.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvND.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colId,
-            this.colName});
-            this.dgvND.Location = new System.Drawing.Point(29, 140);
-            this.dgvND.Name = "dgvND";
-            this.dgvND.RowHeadersWidth = 51;
-            this.dgvND.RowTemplate.Height = 24;
-            this.dgvND.Size = new System.Drawing.Size(815, 253);
-            this.dgvND.TabIndex = 13;
-            this.dgvND.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvND_CellClick);
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "TenNguoiDung";
-            this.colId.HeaderText = "Tên người dùng";
-            this.colId.MinimumWidth = 6;
-            this.colId.Name = "colId";
-            this.colId.Width = 125;
-            // 
-            // colName
-            // 
-            this.colName.DataPropertyName = "MatKhau";
-            this.colName.HeaderText = "Mật khẩu";
-            this.colName.MinimumWidth = 6;
-            this.colName.Name = "colName";
-            this.colName.Width = 125;
+            this.dgvCTHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCTHD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colMaHD,
+            this.colName,
+            this.colSoluong});
+            this.dgvCTHD.Location = new System.Drawing.Point(32, 207);
+            this.dgvCTHD.Name = "dgvCTHD";
+            this.dgvCTHD.RowHeadersWidth = 51;
+            this.dgvCTHD.RowTemplate.Height = 24;
+            this.dgvCTHD.Size = new System.Drawing.Size(429, 230);
+            this.dgvCTHD.TabIndex = 13;
+            this.dgvCTHD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCTHD_CellClick);
             // 
             // btnReload
             // 
             this.btnReload.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnReload.ForeColor = System.Drawing.Color.Blue;
-            this.btnReload.Location = new System.Drawing.Point(709, 94);
+            this.btnReload.Location = new System.Drawing.Point(506, 143);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(135, 40);
             this.btnReload.TabIndex = 12;
@@ -153,7 +141,7 @@
             // 
             this.btnExit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnExit.ForeColor = System.Drawing.Color.Red;
-            this.btnExit.Location = new System.Drawing.Point(709, 23);
+            this.btnExit.Location = new System.Drawing.Point(506, 54);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(135, 40);
             this.btnExit.TabIndex = 11;
@@ -164,69 +152,113 @@
             // panel
             // 
             this.panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel.Controls.Add(this.txtMK);
-            this.panel.Controls.Add(this.txtTen);
-            this.panel.Controls.Add(this.lblName);
-            this.panel.Controls.Add(this.lblID);
-            this.panel.Location = new System.Drawing.Point(29, 23);
+            this.panel.Controls.Add(this.txtSoluong);
+            this.panel.Controls.Add(this.lblSoLuong);
+            this.panel.Controls.Add(this.txtMaSP);
+            this.panel.Controls.Add(this.txtMaHD);
+            this.panel.Controls.Add(this.lblMaSP);
+            this.panel.Controls.Add(this.lblMaHD);
+            this.panel.Location = new System.Drawing.Point(32, 32);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(652, 111);
+            this.panel.Size = new System.Drawing.Size(441, 174);
             this.panel.TabIndex = 10;
             // 
-            // txtMK
+            // txtMaSP
             // 
-            this.txtMK.Location = new System.Drawing.Point(180, 67);
-            this.txtMK.Multiline = true;
-            this.txtMK.Name = "txtMK";
-            this.txtMK.Size = new System.Drawing.Size(463, 33);
-            this.txtMK.TabIndex = 4;
+            this.txtMaSP.Location = new System.Drawing.Point(180, 67);
+            this.txtMaSP.Multiline = true;
+            this.txtMaSP.Name = "txtMaSP";
+            this.txtMaSP.Size = new System.Drawing.Size(186, 33);
+            this.txtMaSP.TabIndex = 4;
             // 
-            // txtTen
+            // txtMaHD
             // 
-            this.txtTen.Location = new System.Drawing.Point(180, 7);
-            this.txtTen.Multiline = true;
-            this.txtTen.Name = "txtTen";
-            this.txtTen.Size = new System.Drawing.Size(186, 33);
-            this.txtTen.TabIndex = 2;
+            this.txtMaHD.Location = new System.Drawing.Point(180, 7);
+            this.txtMaHD.Multiline = true;
+            this.txtMaHD.Name = "txtMaHD";
+            this.txtMaHD.Size = new System.Drawing.Size(186, 33);
+            this.txtMaHD.TabIndex = 2;
             // 
-            // lblName
+            // lblMaSP
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblName.Location = new System.Drawing.Point(8, 67);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(107, 28);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "Mật khẩu:";
+            this.lblMaSP.AutoSize = true;
+            this.lblMaSP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblMaSP.Location = new System.Drawing.Point(8, 67);
+            this.lblMaSP.Name = "lblMaSP";
+            this.lblMaSP.Size = new System.Drawing.Size(76, 28);
+            this.lblMaSP.TabIndex = 1;
+            this.lblMaSP.Text = "Mã SP:";
             // 
-            // lblID
+            // lblMaHD
             // 
-            this.lblID.AutoSize = true;
-            this.lblID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(8, 9);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(166, 28);
-            this.lblID.TabIndex = 0;
-            this.lblID.Text = "Tên người dùng:";
+            this.lblMaHD.AutoSize = true;
+            this.lblMaHD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaHD.Location = new System.Drawing.Point(8, 9);
+            this.lblMaHD.Name = "lblMaHD";
+            this.lblMaHD.Size = new System.Drawing.Size(83, 28);
+            this.lblMaHD.TabIndex = 0;
+            this.lblMaHD.Text = "Mã HĐ:";
             // 
-            // frmQLDanhMucNguoiDung
+            // txtSoluong
+            // 
+            this.txtSoluong.Location = new System.Drawing.Point(180, 123);
+            this.txtSoluong.Multiline = true;
+            this.txtSoluong.Name = "txtSoluong";
+            this.txtSoluong.Size = new System.Drawing.Size(186, 33);
+            this.txtSoluong.TabIndex = 6;
+            // 
+            // lblSoLuong
+            // 
+            this.lblSoLuong.AutoSize = true;
+            this.lblSoLuong.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblSoLuong.Location = new System.Drawing.Point(8, 123);
+            this.lblSoLuong.Name = "lblSoLuong";
+            this.lblSoLuong.Size = new System.Drawing.Size(102, 28);
+            this.lblSoLuong.TabIndex = 5;
+            this.lblSoLuong.Text = "Số lượng:";
+            // 
+            // colMaHD
+            // 
+            this.colMaHD.DataPropertyName = "MaHD";
+            this.colMaHD.HeaderText = "Mã HĐ";
+            this.colMaHD.MinimumWidth = 6;
+            this.colMaHD.Name = "colMaHD";
+            this.colMaHD.Width = 125;
+            // 
+            // colName
+            // 
+            this.colName.DataPropertyName = "MaSP";
+            this.colName.HeaderText = "Mã SP";
+            this.colName.MinimumWidth = 6;
+            this.colName.Name = "colName";
+            this.colName.Width = 125;
+            // 
+            // colSoluong
+            // 
+            this.colSoluong.DataPropertyName = "Soluong";
+            this.colSoluong.HeaderText = "Số lượng";
+            this.colSoluong.MinimumWidth = 6;
+            this.colSoluong.Name = "colSoluong";
+            this.colSoluong.Width = 125;
+            // 
+            // frmQLDanhMucChiTietHopDong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(981, 515);
+            this.ClientSize = new System.Drawing.Size(766, 536);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.dgvND);
+            this.Controls.Add(this.dgvCTHD);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.panel);
-            this.Name = "frmQLDanhMucNguoiDung";
-            this.Text = "frmQLDanhMucNguoiDung";
-            this.Load += new System.EventHandler(this.frmQLDanhMucNguoiDung_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvND)).EndInit();
+            this.Name = "frmQLDanhMucChiTietHopDong";
+            this.Text = "frmQLDanhMucChiTietHopDong";
+            this.Load += new System.EventHandler(this.frmQLDanhMucChiTietHopDong_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCTHD)).EndInit();
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
             this.ResumeLayout(false);
@@ -240,15 +272,18 @@
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.DataGridView dgvND;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridView dgvCTHD;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel panel;
-        private System.Windows.Forms.TextBox txtMK;
-        private System.Windows.Forms.TextBox txtTen;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.TextBox txtMaSP;
+        private System.Windows.Forms.TextBox txtMaHD;
+        private System.Windows.Forms.Label lblMaSP;
+        private System.Windows.Forms.Label lblMaHD;
+        private System.Windows.Forms.TextBox txtSoluong;
+        private System.Windows.Forms.Label lblSoLuong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSoluong;
     }
 }

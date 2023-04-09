@@ -68,15 +68,16 @@
             // login
             // 
             this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(177, 26);
+            this.login.Size = new System.Drawing.Size(224, 26);
             this.login.Text = "Đăng nhập";
+            this.login.Click += new System.EventHandler(this.login_Click);
             // 
             // exit
             // 
             this.exit.Name = "exit";
             this.exit.ShortcutKeyDisplayString = "";
             this.exit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
-            this.exit.Size = new System.Drawing.Size(177, 26);
+            this.exit.Size = new System.Drawing.Size(224, 26);
             this.exit.Text = "Thoát";
             this.exit.Click += new System.EventHandler(this.exitClick);
             // 
@@ -120,18 +121,21 @@
             this.danhMụcSảnPhẩmToolStripMenuItem.Name = "danhMụcSảnPhẩmToolStripMenuItem";
             this.danhMụcSảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(267, 26);
             this.danhMụcSảnPhẩmToolStripMenuItem.Text = "Danh mục sản phẩm";
+            this.danhMụcSảnPhẩmToolStripMenuItem.Click += new System.EventHandler(this.SanPhamClick);
             // 
             // danhMụcHoáĐơnToolStripMenuItem
             // 
             this.danhMụcHoáĐơnToolStripMenuItem.Name = "danhMụcHoáĐơnToolStripMenuItem";
             this.danhMụcHoáĐơnToolStripMenuItem.Size = new System.Drawing.Size(267, 26);
             this.danhMụcHoáĐơnToolStripMenuItem.Text = "Danh mục hoá đơn";
+            this.danhMụcHoáĐơnToolStripMenuItem.Click += new System.EventHandler(this.HoaDonClick);
             // 
             // danhMụcChiTiếtHoáĐơnToolStripMenuItem
             // 
             this.danhMụcChiTiếtHoáĐơnToolStripMenuItem.Name = "danhMụcChiTiếtHoáĐơnToolStripMenuItem";
             this.danhMụcChiTiếtHoáĐơnToolStripMenuItem.Size = new System.Drawing.Size(267, 26);
             this.danhMụcChiTiếtHoáĐơnToolStripMenuItem.Text = "Danh mục chi tiết hoá đơn";
+            this.danhMụcChiTiếtHoáĐơnToolStripMenuItem.Click += new System.EventHandler(this.CTHDCLick);
             // 
             // danhMụcNgườiDùngToolStripMenuItem
             // 

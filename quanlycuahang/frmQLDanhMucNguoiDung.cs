@@ -42,11 +42,11 @@ namespace quanlycuahang
                 this.btnRemove.Enabled = true;
 
                 //
-                dgvCity_CellClick(null, null);
+                dgvND_CellClick(null, null);
             }
             catch
             {
-                MessageBox.Show("Không lấy được nội dung trong table THANHPHO. Lỗi rồi!!!");
+                MessageBox.Show("Không lấy được nội dung trong table NGUOIDUNG. Lỗi rồi!!!");
             }
         }
 
@@ -125,7 +125,7 @@ namespace quanlycuahang
             }
             else
             {
-                MessageBox.Show("Thành phố chưa có. Lỗi rồi!");
+                MessageBox.Show("Người dùng chưa có. Lỗi rồi!");
                 txtTen.Focus();
             }
 
@@ -137,7 +137,7 @@ namespace quanlycuahang
             Them = false;
             // Cho phép thao tác trên Panel
             this.panel.Enabled = true;
-            dgvCity_CellClick(null, null);
+            dgvND_CellClick(null, null);
             // Cho thao tác trên các nút Lưu / Hủy / Panel
             this.btnSave.Enabled = true;
             this.btnCancel.Enabled = true;
@@ -197,15 +197,22 @@ namespace quanlycuahang
             LoadData();
         }
 
-        private void dgvCity_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvND_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Thứ tự dòng hiện hành
-            int r = dgvND.CurrentCell.RowIndex;
-            // Chuyển thông tin lên panel
-            this.txtTen.Text =
-            dgvND.Rows[r].Cells[0].Value.ToString();
-            this.txtMK.Text =
-            dgvND.Rows[r].Cells[1].Value.ToString();
+            // Thứ tự dòng hiện hành           
+            try
+            {
+                int r = dgvND.CurrentCell.RowIndex;
+                // Chuyển thông tin lên panel
+                this.txtTen.Text =
+                dgvND.Rows[r].Cells[0].Value.ToString();
+                this.txtMK.Text =
+                dgvND.Rows[r].Cells[1].Value.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Dòng này không có dữ liệu");
+            }
         }
 
         private void frmQLDanhMucNguoiDung_Load(object sender, EventArgs e)

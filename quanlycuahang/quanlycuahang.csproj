@@ -47,10 +47,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BS layer\BLChiTietHoaDon.cs" />
+    <Compile Include="BS layer\BLHoaDon.cs" />
     <Compile Include="BS layer\BLKhachHang.cs" />
     <Compile Include="BS layer\BLNguoiDung.cs" />
     <Compile Include="BS layer\BLNhanVien.cs" />
+    <Compile Include="BS layer\BLSanPham.cs" />
     <Compile Include="BS layer\BLThanhPho.cs" />
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQLDanhMucChiTietHopDong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLDanhMucChiTietHopDong.Designer.cs">
+      <DependentUpon>frmQLDanhMucChiTietHopDong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQLDanhMucHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLDanhMucHoaDon.Designer.cs">
+      <DependentUpon>frmQLDanhMucHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQLDanhMucKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +83,12 @@
     </Compile>
     <Compile Include="frmQLDanhMucNguoiDung.Designer.cs">
       <DependentUpon>frmQLDanhMucNguoiDung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQLDanhMucSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLDanhMucSanPham.Designer.cs">
+      <DependentUpon>frmQLDanhMucSanPham.cs</DependentUpon>
     </Compile>
     <Compile Include="frmQLDanhMucThanhPho.cs">
       <SubType>Form</SubType>
@@ -88,6 +115,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLyBanHang.dbml</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQLDanhMucChiTietHopDong.resx">
+      <DependentUpon>frmQLDanhMucChiTietHopDong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQLDanhMucHoaDon.resx">
+      <DependentUpon>frmQLDanhMucHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmQLDanhMucKhachHang.resx">
       <DependentUpon>frmQLDanhMucKhachHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQLDanhMucNhanVien.resx">
       <DependentUpon>frmQLDanhMucNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQLDanhMucSanPham.resx">
+      <DependentUpon>frmQLDanhMucSanPham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQLDanhMucThanhPho.resx">
       <DependentUpon>frmQLDanhMucThanhPho.cs</DependentUpon>

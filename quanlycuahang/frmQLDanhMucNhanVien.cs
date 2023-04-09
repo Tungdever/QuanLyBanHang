@@ -52,7 +52,7 @@ namespace quanlycuahang
             }
             catch
             {
-                MessageBox.Show("Không lấy được nội dung trong table THANHPHO. Lỗi rồi!!!");
+                MessageBox.Show("Không lấy được nội dung trong table NHANVIEN. Lỗi rồi!!!");
             }
         }
 
@@ -134,7 +134,7 @@ namespace quanlycuahang
             }
             else
             {
-                MessageBox.Show("Thành phố chưa có. Lỗi rồi!");
+                MessageBox.Show("Nhân viên chưa có. Lỗi rồi!");
                 txtID.Focus();
             }
 
@@ -211,25 +211,32 @@ namespace quanlycuahang
         }
 
         private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Thứ tự dòng hiện hành
-            int r = dgvNV.CurrentCell.RowIndex;
-            // Chuyển thông tin lên panel
-            this.txtID.Text =
-            dgvNV.Rows[r].Cells[0].Value.ToString();
-            this.txtHoLot.Text =
-            dgvNV.Rows[r].Cells[1].Value.ToString();
-            this.txtTen.Text =
-            dgvNV.Rows[r].Cells[2].Value.ToString();
-            this.cboxNu.Checked = Convert.ToBoolean(dgvNV.Rows[r].Cells[3].Value);
-            if (DateTime.TryParse(dgvNV.Rows[r].Cells[4].Value?.ToString(), out DateTime date))
+        {          
+            try
             {
-                this.dtpNgayNV.Value = date;
+                // Thứ tự dòng hiện hành
+                int r = dgvNV.CurrentCell.RowIndex;
+                // Chuyển thông tin lên panel
+                this.txtID.Text =
+                dgvNV.Rows[r].Cells[0].Value.ToString();
+                this.txtHoLot.Text =
+                dgvNV.Rows[r].Cells[1].Value.ToString();
+                this.txtTen.Text =
+                dgvNV.Rows[r].Cells[2].Value.ToString();
+                this.cboxNu.Checked = Convert.ToBoolean(dgvNV.Rows[r].Cells[3].Value);
+                if (DateTime.TryParse(dgvNV.Rows[r].Cells[4].Value?.ToString(), out DateTime date))
+                {
+                    this.dtpNgayNV.Value = date;
+                }
+                this.txtDiaChi.Text =
+                dgvNV.Rows[r].Cells[5].Value.ToString();
+                this.txtPhone.Text =
+                dgvNV.Rows[r].Cells[6].Value.ToString();
             }
-            this.txtDiaChi.Text =
-            dgvNV.Rows[r].Cells[5].Value.ToString();
-            this.txtPhone.Text =
-            dgvNV.Rows[r].Cells[6].Value.ToString();
+            catch
+            {
+                MessageBox.Show("Dòng này không có dữ liệu");
+            }
         }
     }
 }

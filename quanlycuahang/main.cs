@@ -51,5 +51,30 @@ namespace quanlycuahang
             frmQLDanhMucNguoiDung myND = new frmQLDanhMucNguoiDung();
             myND.ShowDialog();
         }
+
+        private void SanPhamClick(object sender, EventArgs e)
+        {
+            frmQLDanhMucSanPham mySP = new frmQLDanhMucSanPham();
+            mySP.ShowDialog();
+        }
+
+        private void CTHDCLick(object sender, EventArgs e)
+        {
+            frmQLDanhMucChiTietHopDong myCTHD = new frmQLDanhMucChiTietHopDong();
+            myCTHD.ShowDialog();
+        }
+
+        private void HoaDonClick(object sender, EventArgs e)
+        {
+
+            frmQLDanhMucHoaDon myHD = new frmQLDanhMucHoaDon();
+            myHD.ShowDialog();
+        }
+
+        private void login_Click(object sender, EventArgs e)
+        {
+            frmLogin myLogin = new frmLogin();
+            myLogin.ShowDialog();
+        }
     }
 }

@@ -36,13 +36,13 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
             this.dgvCity = new System.Windows.Forms.DataGridView();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCity)).BeginInit();
             this.SuspendLayout();
@@ -133,6 +133,22 @@
             this.dgvCity.TabIndex = 4;
             this.dgvCity.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCity_CellClick);
             // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "ThanhPho1";
+            this.colId.HeaderText = "Thành Phố";
+            this.colId.MinimumWidth = 6;
+            this.colId.Name = "colId";
+            this.colId.Width = 125;
+            // 
+            // colName
+            // 
+            this.colName.DataPropertyName = "TenThanhPho";
+            this.colName.HeaderText = "Tên Thành Phố";
+            this.colName.MinimumWidth = 6;
+            this.colName.Name = "colName";
+            this.colName.Width = 125;
+            // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
@@ -192,22 +208,6 @@
             this.btnCancel.Text = "Huỷ";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "ThanhPho1";
-            this.colId.HeaderText = "Thành Phố";
-            this.colId.MinimumWidth = 6;
-            this.colId.Name = "colId";
-            this.colId.Width = 125;
-            // 
-            // colName
-            // 
-            this.colName.DataPropertyName = "TenThanhPho";
-            this.colName.HeaderText = "Tên Thành Phố";
-            this.colName.MinimumWidth = 6;
-            this.colName.Name = "colName";
-            this.colName.Width = 125;
             // 
             // frmQLDanhMucThanhPho
             // 

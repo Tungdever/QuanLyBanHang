@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace quanlycuahang.BS_layer
     {
         public System.Data.Linq.Table<KhachHang> LayKhachHang()
         {
-            QuanLyBanHangDataContext qlBH = new QuanLyBanHangDataContext();
+            QuanLyBanHangDataContext qlBH = new QuanLyBanHangDataContext();                       
             return qlBH.KhachHangs;
         }
         public bool ThemKhachHang(string Makh, string TenCongTy, string DiaChi,string TenThanhPho,string DienThoai, ref string err)
