@@ -18,6 +18,7 @@ namespace quanlycuahang
         bool Them;
         string err;
         BLKhachHang dbKH = new BLKhachHang();
+        BLThanhPho dbTP = new BLThanhPho();
         public frmQLDanhMucKhachHang()
         {
             InitializeComponent();
@@ -26,18 +27,28 @@ namespace quanlycuahang
         {
             try
             {
-                // Đưa dữ liệu lên DataGridView
-                dgvKH.DataSource = dbKH.LayKhachHang();
-                var listCity = from tp in dbKH.LayKhachHang()
-                               select tp.ThanhPho;
-                txtCity.DataSource = listCity;
+                // Đưa dữ liệu lên DataGridView                              
+                var dsKH = dbKH.LayKhachHang();
+                foreach (var item in dsKH)
+                {
+                    dbKH.CheckThanhPho(item.MaKH, item.TenCty, item.DiaChi, item.ThanhPho, item.DienThoai, ref err);
+                }
+                var listCity = dbTP.LayThanhPho();
+                cbbCity.DataSource = listCity;
+                cbbCity.DisplayMember = "TenThanhPho";
+                cbbCity.ValueMember = "ThanhPho1";
                 
-                // Thêm cột ComboBox vào DataGridView
+                // Set up the DataGridViewComboBoxColumn
+                (dgvKH.Columns["ColCity"] as DataGridViewComboBoxColumn).DataSource = listCity;
+                (dgvKH.Columns["ColCity"] as DataGridViewComboBoxColumn).ValueMember = "ThanhPho1";
+                (dgvKH.Columns["ColCity"] as DataGridViewComboBoxColumn).DisplayMember = "TenThanhPho";
+                // Set up the DataGridView data source
+                dgvKH.DataSource = dbKH.LayKhachHang();
                 // Thay đổi độ rộng cột
-                //dgvKH.AutoResizeColumns();
+                // dgvKH.AutoResizeColumns();
                 // Xóa trống các đối tượng trong Panel
                 this.txtID.ResetText();
-                this.txtCity.ResetText();
+                this.cbbCity.ResetText();
                 this.txtCty.ResetText();
                 this.txtDChi.ResetText();
                 this.txtPhone.ResetText();
@@ -81,7 +92,7 @@ namespace quanlycuahang
             txtID.Enabled = true;
             // Xóa trống các đối tượng trong Panel
             this.txtID.ResetText();
-            this.txtCity.ResetText();
+            this.cbbCity.ResetText();
             this.txtCty.ResetText();
             this.txtDChi.ResetText();
             this.txtPhone.ResetText();
@@ -107,7 +118,7 @@ namespace quanlycuahang
                 {
                     try
                     {
-                        dbKH.ThemKhachHang(txtID.Text, txtCty.Text,txtDChi.Text,txtCity.Text,txtPhone.Text, ref err);
+                        dbKH.ThemKhachHang(txtID.Text, txtCty.Text, txtDChi.Text, cbbCity.SelectedValue.ToString(), txtPhone.Text, ref err);
                         // Load lại dữ liệu trên DataGridView
                         LoadData();
                         // Thông báo
@@ -122,7 +133,7 @@ namespace quanlycuahang
                 {
                     try
                     {
-                        dbKH.CapNhatKhachHang(txtID.Text, txtCty.Text, txtDChi.Text, txtCity.Text, txtPhone.Text, ref err);
+                        dbKH.CapNhatKhachHang(txtID.Text, txtCty.Text, txtDChi.Text, cbbCity.SelectedValue.ToString(), txtPhone.Text, ref err);
                         LoadData();
                         // Thông báo
                         MessageBox.Show("Đã sửa xong!");
@@ -191,7 +202,7 @@ namespace quanlycuahang
         {
             // Xóa trống các đối tượng trong Panel
             this.txtID.ResetText();
-            this.txtCity.ResetText();
+            this.cbbCity.ResetText();
             this.txtCty.ResetText();
             this.txtDChi.ResetText();
             this.txtPhone.ResetText();
@@ -219,8 +230,7 @@ namespace quanlycuahang
                 dgvKH.Rows[r].Cells[1].Value.ToString();
                 this.txtDChi.Text =
                 dgvKH.Rows[r].Cells[2].Value.ToString();
-                this.txtCity.Text =
-                dgvKH.Rows[r].Cells[3].Value.ToString();
+                this.cbbCity.SelectedValue = dgvKH.Rows[r].Cells[3].Value.ToString();
                 this.txtPhone.Text =
                 dgvKH.Rows[r].Cells[4].Value.ToString();
             }

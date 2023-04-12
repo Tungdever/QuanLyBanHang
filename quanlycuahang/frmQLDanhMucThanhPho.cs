@@ -39,7 +39,7 @@ namespace quanlycuahang
                 this.btnCancel.Enabled = false;
                 this.panel.Enabled = false;
                 // Cho thao tác trên các nút Thêm / Sửa / Xóa /Thoát
-                this.btnAdd.Enabled = true;
+                this.btnExit.Enabled = true;
                 this.btnEdit.Enabled = true;
                 this.btnRemove.Enabled = true;
 

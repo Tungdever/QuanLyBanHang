@@ -28,8 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvKH = new System.Windows.Forms.DataGridView();
+            this.ColKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCity = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ColSDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl = new System.Windows.Forms.Panel();
+            this.cbbCity = new System.Windows.Forms.ComboBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtDChi = new System.Windows.Forms.TextBox();
             this.txtCty = new System.Windows.Forms.TextBox();
@@ -46,14 +53,10 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.txtCity = new System.Windows.Forms.ComboBox();
-            this.ColKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColCty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColSDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thanhPhoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKH)).BeginInit();
             this.pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.thanhPhoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvKH
@@ -73,9 +76,58 @@
             this.dgvKH.TabIndex = 11;
             this.dgvKH.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKH_CellClick);
             // 
+            // ColKH
+            // 
+            this.ColKH.DataPropertyName = "MaKH";
+            this.ColKH.HeaderText = "Mã KH";
+            this.ColKH.MinimumWidth = 6;
+            this.ColKH.Name = "ColKH";
+            this.ColKH.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColKH.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColKH.Width = 125;
+            // 
+            // ColCty
+            // 
+            this.ColCty.DataPropertyName = "TenCty";
+            this.ColCty.HeaderText = "Tên Cty";
+            this.ColCty.MinimumWidth = 6;
+            this.ColCty.Name = "ColCty";
+            this.ColCty.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColCty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColCty.Width = 125;
+            // 
+            // ColAddress
+            // 
+            this.ColAddress.DataPropertyName = "DiaChi";
+            this.ColAddress.HeaderText = "Địa Chỉ";
+            this.ColAddress.MinimumWidth = 6;
+            this.ColAddress.Name = "ColAddress";
+            this.ColAddress.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColAddress.Width = 125;
+            // 
+            // ColCity
+            // 
+            this.ColCity.DataPropertyName = "ThanhPho";
+            this.ColCity.HeaderText = "Thành Phố";
+            this.ColCity.MinimumWidth = 6;
+            this.ColCity.Name = "ColCity";
+            this.ColCity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColCity.Width = 125;
+            // 
+            // ColSDT
+            // 
+            this.ColSDT.DataPropertyName = "DienThoai";
+            this.ColSDT.HeaderText = "Điện Thoại";
+            this.ColSDT.MinimumWidth = 6;
+            this.ColSDT.Name = "ColSDT";
+            this.ColSDT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColSDT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColSDT.Width = 125;
+            // 
             // pnl
             // 
-            this.pnl.Controls.Add(this.txtCity);
+            this.pnl.Controls.Add(this.cbbCity);
             this.pnl.Controls.Add(this.txtPhone);
             this.pnl.Controls.Add(this.txtDChi);
             this.pnl.Controls.Add(this.txtCty);
@@ -89,6 +141,16 @@
             this.pnl.Name = "pnl";
             this.pnl.Size = new System.Drawing.Size(901, 195);
             this.pnl.TabIndex = 12;
+            // 
+            // cbbCity
+            // 
+            this.cbbCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbCity.FormattingEnabled = true;
+            this.cbbCity.Location = new System.Drawing.Point(595, 20);
+            this.cbbCity.Name = "cbbCity";
+            this.cbbCity.Size = new System.Drawing.Size(157, 28);
+            this.cbbCity.TabIndex = 22;
             // 
             // txtPhone
             // 
@@ -252,64 +314,9 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // txtCity
+            // thanhPhoBindingSource
             // 
-            this.txtCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCity.FormattingEnabled = true;
-            this.txtCity.Location = new System.Drawing.Point(595, 20);
-            this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(157, 28);
-            this.txtCity.TabIndex = 22;
-            // 
-            // ColKH
-            // 
-            this.ColKH.DataPropertyName = "MaKH";
-            this.ColKH.HeaderText = "Mã KH";
-            this.ColKH.MinimumWidth = 6;
-            this.ColKH.Name = "ColKH";
-            this.ColKH.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColKH.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColKH.Width = 125;
-            // 
-            // ColCty
-            // 
-            this.ColCty.DataPropertyName = "TenCty";
-            this.ColCty.HeaderText = "Tên Cty";
-            this.ColCty.MinimumWidth = 6;
-            this.ColCty.Name = "ColCty";
-            this.ColCty.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColCty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColCty.Width = 125;
-            // 
-            // ColAddress
-            // 
-            this.ColAddress.DataPropertyName = "DiaChi";
-            this.ColAddress.HeaderText = "Địa Chỉ";
-            this.ColAddress.MinimumWidth = 6;
-            this.ColAddress.Name = "ColAddress";
-            this.ColAddress.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColAddress.Width = 125;
-            // 
-            // ColCity
-            // 
-            this.ColCity.DataPropertyName = "ThanhPho";
-            this.ColCity.HeaderText = "Thành Phố";
-            this.ColCity.MinimumWidth = 6;
-            this.ColCity.Name = "ColCity";
-            this.ColCity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColCity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColCity.Width = 125;
-            // 
-            // ColSDT
-            // 
-            this.ColSDT.DataPropertyName = "DienThoai";
-            this.ColSDT.HeaderText = "Điện Thoại";
-            this.ColSDT.MinimumWidth = 6;
-            this.ColSDT.Name = "ColSDT";
-            this.ColSDT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColSDT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColSDT.Width = 125;
+            this.thanhPhoBindingSource.DataSource = typeof(quanlycuahang.ThanhPho);
             // 
             // frmQLDanhMucKhachHang
             // 
@@ -331,6 +338,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvKH)).EndInit();
             this.pnl.ResumeLayout(false);
             this.pnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.thanhPhoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -354,11 +362,12 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.ComboBox txtCity;
+        private System.Windows.Forms.ComboBox cbbCity;
+        private System.Windows.Forms.BindingSource thanhPhoBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColKH;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColCty;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColCity;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ColCity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColSDT;
     }
 }

@@ -7,12 +7,24 @@ using System.Threading.Tasks;
 
 namespace quanlycuahang.BS_layer
 {
+   
     public class BLKhachHang
     {
+        BLThanhPho dbTP = new BLThanhPho();
         public System.Data.Linq.Table<KhachHang> LayKhachHang()
         {
             QuanLyBanHangDataContext qlBH = new QuanLyBanHangDataContext();                       
             return qlBH.KhachHangs;
+        }
+        public void CheckThanhPho(string Makh, string TenCongTy, string DiaChi, string TenThanhPho, string DienThoai, ref string err)
+        {
+            var dsTP = from tp in dbTP.LayThanhPho()
+                                select tp.ThanhPho1;
+            
+            if (!dsTP.ToList().Contains(TenThanhPho))
+            {
+                this.CapNhatKhachHang(Makh, TenCongTy, DiaChi, "00", DienThoai,ref err);
+            }
         }
         public bool ThemKhachHang(string Makh, string TenCongTy, string DiaChi,string TenThanhPho,string DienThoai, ref string err)
         {
